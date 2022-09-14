@@ -48,7 +48,7 @@ const numButtons = document.querySelectorAll('.numButton');
 numButtons.forEach(button => button.addEventListener('click', function(e) {
     displayScreen.innerText += `${button.innerText}`;
     workingValues.push(button.innerText);
-    workingValues = [parseInt(workingValues.join(''))];
+    workingValues = [parseFloat(workingValues.join(''))];
 }));
 
 const operatorButtons = document.querySelectorAll('.operatorButton'); 
@@ -81,3 +81,12 @@ clearButton.addEventListener('click', function(e) {
     displayScreen.innerText = '';
     previousScreen.innerText = '';
 });
+
+const decimalButton = document.querySelector('#decimalbtn');
+decimalButton.addEventListener('click', function(e) {
+    if (workingValues.toString().includes('.')) return;
+    displayScreen.innerText += `${this.innerText}`;
+    workingValues.push(this.innerText);
+});
+
+const backspaceButton = document.querySelector('#backspacebtn');
