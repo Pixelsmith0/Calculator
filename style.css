@@ -1,0 +1,19 @@
+body {
+    background-color: white;
+}
+
+#calculatorBody {
+    border-style: solid;
+    border-color: aqua;
+    border-width: 2px;
+    height: 640px;
+    width: 640px;
+}
+
+#mainDisplay {
+    background-color: darkgray;
+}
+
+.row {
+    display: flex;
+}
