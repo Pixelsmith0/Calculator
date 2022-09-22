@@ -5,7 +5,7 @@ function isCharNum(c) { //Returns true if a value is a number
         return true;
     } else if (typeof c === 'number') {
         return true;
-    };
+    } else return false;
 };
 
 function joinNums(arr) { //Concatenates adjacent numbers in an array. Required to run other eval functions incl. joinDecimals
@@ -112,6 +112,7 @@ const equalButton = document.querySelector('#equalsbtn');
 equalButton.addEventListener('click', function(e) {
     if (typeof evalArray[0] !== 'number') return; //exits if last index is not a number
     if (checkIfNerd()) return;
+    if (isCharNum(evalArray[evalArray.length - 1]) === false) return; //Exits if last index of evalArray is a string
     displayScreen.innerText += ` ${this.innerText}`; //Display - Adds whitespace then '=' to display
     previousScreen.innerText = displayScreen.innerText; //Display - equation transfers to 2nd display screen
     evalEquation(evalArray); //Evaluates equation, leaving evalArray with one index

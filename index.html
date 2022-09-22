@@ -10,21 +10,25 @@
 <body>
 <div id="calculatorBody">
     <div id="displayContainer">
-        <div id="previousDisplay"></div>
-        <div id="mainDisplay"></div>
+        <div id="previousDisplay" class="display"></div>
+        <div id="mainDisplay" class="display"></div>
     </div>    
-    <div id="buttonContainer"></div>
+    <div id="buttonContainer">
+        <div class="row topRow">
+            <button id="backspacebtn" class="button">BS</button>
+            <button id="clearbtn" class="button">CE</button>
+        </div>
         <div class="row">
             <button id="7btn" class="numButton button">7</button>
             <button id="8btn" class="numButton button">8</button>
             <button id="9btn" class="numButton button">9</button>
-            <button id="clearbtn" class="button">CE</button>
+            <button id="multiplybtn" class="operatorButton button">x</button>
         </div>
         <div class="row">
             <button id="4btn" class="numButton button">4</button>
             <button id="5btn" class="numButton button">5</button>
             <button id="6btn" class="numButton button">6</button>
-            <button id="multiplybtn" class="operatorButton button">x</button>
+            <button id="dividebtn" class="operatorButton button">/</button>
         </div>
         <div class="row">    
             <button id="1btn" class="numButton button">1</button>
@@ -34,14 +38,11 @@
         </div>
         <div class="row">
             <button id="0btn" class="numButton button">0</button>
-            <button id="dividebtn" class="operatorButton button">/</button>
+            <button id="decimalbtn" class="button">.</button>
             <button id="equalsbtn" class="button">=</button>
             <button id="addbtn" class="operatorButton button">+</button>
         </div>
-        <div class="row">
-            <button id="backspacebtn">BS</button>
-            <button id="decimalbtn">.</button>
-        </div>
+    </div>    
 </div>
 
 <script src="./script.js"> </script>
