@@ -14,6 +14,7 @@ body {
     border-style: solid;
     border-width: 10px;
     border-color: #5D80CB;
+    border-radius: 20px;
     margin-top: 50px;
 }
 
@@ -27,6 +28,7 @@ body {
     border-style: solid;
     border-width: 4px;
     border-color: #14213D;
+    border-radius: 12px;
 }
 
 .display {
@@ -39,13 +41,16 @@ body {
     height: 70px;
     font-size: 60px;
     color: #373737;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 
 #previousDisplay {
     height: 50px;
     font-size: 40px;
     color: #6D6D6D;
-    /* font-family: digital-italic; */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
 
 
