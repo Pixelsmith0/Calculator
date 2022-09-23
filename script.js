@@ -1,4 +1,5 @@
 let evalArray = []; //Stores equation to be evaluated
+let sum = 0; //Used to check if sum is negative
 
 function isCharNum(c) { //Returns true if a value is a number
     if (c >= '0' && c <= '9') {
@@ -76,11 +77,26 @@ function checkIfNerd() { //Prevents the user from dividing by 0. Called on every
     } else if (displayScreen.innerText === 'nice try nerd') return true;
 };
 
+function limitChars(arr) {
+    if (arr.length >= 11 && isCharNum(evalArray[evalArray.length - 1]) === true) {
+        previousScreen.innerText = 'Limit reached. Use = or ⌫';
+        return true;
+    };
+};
+
+function checkNegative(sum) {
+    if (sum >= 0) return;
+    else {
+        evalArray.unshift(-1, 'x');
+    };
+};
+
 const displayScreen = document.querySelector('#mainDisplay');
 const previousScreen = document.querySelector('#previousDisplay');
 const numButtons = document.querySelectorAll('.numButton');
 numButtons.forEach(button => button.addEventListener('click', function(e) {
     if (checkIfNerd()) return;
+    if (limitChars(evalArray)) return;
     //Display - Checks the value at the last index of evalArray. Adds no whitespace if number or decimal, or does add whitespace if operator 
     if (typeof evalArray[evalArray.length - 1] === 'number' || evalArray[evalArray.length - 1] === '.') { 
         displayScreen.innerText += button.innerText;
@@ -91,6 +107,7 @@ numButtons.forEach(button => button.addEventListener('click', function(e) {
 const operatorButtons = document.querySelectorAll('.operatorButton'); 
 operatorButtons.forEach(button => button.addEventListener('click', function(e) {
     if (checkIfNerd()) return;
+    if (limitChars(evalArray)) return;
     if (typeof evalArray[evalArray.length - 1] !== 'number') return; //Wont add operators if last index is not a number
     displayScreen.innerText += ` ${button.innerText}`; // Display - Adds whitespace and then operator to display
     evalArray.push(button.innerText); //Pushes the pressed operator into the evalArray
@@ -117,8 +134,11 @@ equalButton.addEventListener('click', function(e) {
     previousScreen.innerText = displayScreen.innerText; //Display - equation transfers to 2nd display screen
     evalEquation(evalArray); //Evaluates equation, leaving evalArray with one index
     evalArray[0] = Math.round(evalArray[0] * 100) / 100; //Rounds up to nearest hundredth
+    sum = evalArray[0]; //Stores sum to check if negative
     displayScreen.innerText = evalArray[0]; //Display - Main display shows the final sum
-    evalArray = convertValueToArray(evalArray) //Converts evalArray's singlular index back into an array. ie evalArray [9.5] becomes evalArray [9, ".", 5] 
+    evalArray[0] = Math.abs(evalArray[0]) //Removes negative
+    evalArray = convertValueToArray(evalArray) //Converts evalArray's singlular index back into an array. ie evalArray [9.5] becomes evalArray [9, ".", 5]
+    checkNegative(sum); //Unshifts [-1, 'x'] to evalArray if final sum is negative
 });
 
 function clearAll() { //Empties everything
@@ -162,6 +182,9 @@ const backspaceButton = document.querySelector('#backspacebtn');
 //Clears everything if the user deletes the last remaining number after using "=". Otherwise updates display and pops the last value off evalArray 
 backspaceButton.addEventListener('click', function(e) {
     if (checkIfNerd()) return;
+    if (previousScreen.innerText === 'Limit reached. Use = or ⌫') {
+        previousScreen.innerText = ''
+    };
     if (previousScreen.innerText !== '' && evalArray.length === 1) {
         clearAll();
     } else {
