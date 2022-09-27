@@ -12,10 +12,11 @@ body {
     height: 700px;
     width: 550px;
     border-style: solid;
-    border-width: 10px;
+    border-width: 15px;
     border-color: #5D80CB;
     border-radius: 20px;
     margin-top: 50px;
+    box-shadow: 6px 6px 18px black;
 }
 
 #displayContainer {
@@ -29,10 +30,11 @@ body {
     border-width: 4px;
     border-color: #14213D;
     border-radius: 12px;
+    background-image: url(./img/display-background.png);
 }
 
 .display {
-    background-color: #E5E5E5;
+    /* background-color: #E5E5E5; */
     width: 500px;
     text-align: end;
 }
@@ -83,6 +85,11 @@ body {
     font-size: 30px;
     border-color: #E5E5E5;
     color: #E8EDF8;
+    box-shadow: 3px 3px 10px black;
+}
+
+.button:active {
+    transform: scale(.95);
 }
 
 .numButton, #decimalbtn {
