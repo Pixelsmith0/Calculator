@@ -1,8 +1,13 @@
+@font-face {
+    font-family: Signika;
+    src: url(./font/SignikaNegative-Regular.ttf);
+}
+
 body {
     background-image: url(./img/space-small.jpg);
     display: flex;
     justify-content: center;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Signika;
 }
 
 #calculatorBody {
@@ -30,7 +35,7 @@ body {
     border-width: 4px;
     border-color: #14213D;
     border-radius: 12px;
-    background-image: url(./img/display-background.png);
+    background-image: url(./img/displayBackground2.png);
 }
 
 .display {
@@ -82,10 +87,11 @@ body {
     border-style: solid;
     border-width: 2px;
     border-radius: 50%;
-    font-size: 30px;
+    font-size: 35px;
     border-color: #E5E5E5;
     color: #E8EDF8;
     box-shadow: 3px 3px 10px black;
+    font-family: Signika;
 }
 
 .button:active {
